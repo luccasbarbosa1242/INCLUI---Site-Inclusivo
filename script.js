@@ -21,6 +21,91 @@
     const activationButton =
       document.querySelector("#ativar-acessibilidade");
 
+    const languageSelector = document.querySelector("[data-language-selector]");
+
+    const languages = {
+      "pt-BR": { short: "Português", reader: "Ouvir a página", changed: "Idioma alterado para português.", voice: "Comandos de voz ativos. Diga trocar idioma para português, inglês ou espanhol." },
+      "en-US": { short: "English", reader: "Listen to page", changed: "Language changed to English.", voice: "Voice commands are active. Say change language to Portuguese, English, or Spanish." },
+      "es-ES": { short: "Español", reader: "Escuchar la página", changed: "Idioma cambiado a español.", voice: "Los comandos de voz están activos. Di cambiar idioma a portugués, inglés o español." }
+    };
+
+    let currentLanguage = localStorage.getItem("inclui-language") || "pt-BR";
+
+    const translatedContent = {
+      "en-US": {
+        ".topo nav a:nth-child(1)": "Understand", ".topo nav a:nth-child(2)": "In practice", ".topo nav a:nth-child(3)": "Examples",
+        ".hero .etiqueta": "DIGITAL ACCESSIBILITY", ".hero h1": "Technology is only complete when <em>it includes.</em>", ".introducao": "Inclusive systems remove barriers so that everyone can study, work, create, and participate in the digital world independently.",
+        ".link-texto": "Discover more <span aria-hidden=\"true\">↓</span>", "#ajuda-comandos": "Voice commands are in the top-right corner. Say “change language to English”, “change topic”, “read topic 2”, “go to the start”, or “go to the end”.",
+        ".cartao-1 strong": "Keyboard", ".cartao-1 small": "Free navigation", ".cartao-2 strong": "Reading", ".cartao-2 small": "Accessible content",
+        ".entenda .etiqueta": "WHAT DOES THIS MEAN?", "#titulo-entenda": "Inclusion is not an extra.<br>It is part of the design.", ".texto-lateral p:first-child": "An inclusive system is designed for people with different ways of perceiving, understanding, and interacting with technology.", ".texto-lateral p:last-child": "Instead of creating one “standard” experience, it offers different paths to achieve the same result.",
+        ".praticas .etiqueta": "DESIGN FOR REAL PEOPLE", "#titulo-praticas": "Small choices, big impacts.", ".praticas-texto > p:not(.etiqueta)": "When accessibility is included from the start, the experience improves for everyone — including in temporary situations such as a slow connection, a noisy environment, or an injury.",
+        ".exemplos .etiqueta": "TECHNOLOGIES THAT OPEN PATHS", "#titulo-exemplos": "Resources that already make a difference", ".convite .etiqueta": "START TODAY", "#titulo-convite": "Designing for everyone is<br><em>designing better.</em>",
+        "footer p:first-of-type": "An academic project about accessibility and digital inclusion.", "footer p:last-of-type": "Made to be accessible."
+      },
+      "es-ES": {
+        ".topo nav a:nth-child(1)": "Entiende", ".topo nav a:nth-child(2)": "En la práctica", ".topo nav a:nth-child(3)": "Ejemplos",
+        ".hero .etiqueta": "ACCESIBILIDAD DIGITAL", ".hero h1": "La tecnología solo está completa cuando <em>incluye.</em>", ".introducao": "Los sistemas inclusivos eliminan barreras para que cada persona pueda estudiar, trabajar, crear y participar en el mundo digital con autonomía.",
+        ".link-texto": "Descubrir más <span aria-hidden=\"true\">↓</span>", "#ajuda-comandos": "Los comandos de voz están en la esquina superior derecha. Di “cambiar idioma a español”, “cambiar tema”, “leer tema 2”, “volver al inicio” o “ir al final”.",
+        ".cartao-1 strong": "Teclado", ".cartao-1 small": "Navegación libre", ".cartao-2 strong": "Lectura", ".cartao-2 small": "Contenido accesible",
+        ".entenda .etiqueta": "¿QUÉ SIGNIFICA ESTO?", "#titulo-entenda": "La inclusión no es un extra.<br>Es parte del proyecto.", ".texto-lateral p:first-child": "Un sistema inclusivo está diseñado para atender a personas con diferentes formas de percibir, comprender e interactuar con la tecnología.", ".texto-lateral p:last-child": "En lugar de crear una única experiencia “estándar”, ofrece distintos caminos para lograr el mismo resultado.",
+        ".praticas .etiqueta": "DISEÑO PARA PERSONAS REALES", "#titulo-praticas": "Pequeñas decisiones, grandes impactos.", ".praticas-texto > p:not(.etiqueta)": "Cuando la accesibilidad se incorpora desde el inicio, la experiencia mejora para todos, incluso en situaciones temporales como una conexión lenta, un entorno ruidoso o una lesión.",
+        ".exemplos .etiqueta": "TECNOLOGÍAS QUE ABREN CAMINOS", "#titulo-exemplos": "Recursos que ya marcan la diferencia", ".convite .etiqueta": "EMPIEZA HOY", "#titulo-convite": "Diseñar para todos es<br><em>diseñar mejor.</em>",
+        "footer p:first-of-type": "Un proyecto académico sobre accesibilidad e inclusión digital.", "footer p:last-of-type": "Hecho para ser accesible."
+      }
+    };
+
+    const portugueseContent = {};
+    Object.assign(translatedContent["en-US"], {
+      "#titulo-ativacao": "Enable voice commands", ".ativacao p:not(.etiqueta)": "To use voice commands, allow access to the microphone. Then you can say commands such as “change language to English”, “change topic”, “read topic 2”, “go to the start”, or “go to the end” .", "#ativar-acessibilidade": "Enable voice commands", "#agora-nao-acessibilidade": "Not now",
+      ".pilar:nth-child(1) h3": "Perceivable", ".pilar:nth-child(1) p": "Information that can be seen, heard, or felt through more than one channel.",
+      ".pilar:nth-child(2) h3": "Operable", ".pilar:nth-child(2) p": "Controls that can be used with a keyboard, mouse, touch, and assistive technologies.",
+      ".pilar:nth-child(3) h3": "Understandable", ".pilar:nth-child(3) p": "Clear text, predictable navigation, and help available when needed.",
+      ".pilar:nth-child(4) h3": "Robust", ".pilar:nth-child(4) p": "Compatibility with screen readers and different browsers and devices.",
+      ".praticas li:nth-child(1) strong": "Alternative text", ".praticas li:nth-child(1) small": "Describes images for people who cannot see them.",
+      ".praticas li:nth-child(2) strong": "Adequate contrast", ".praticas li:nth-child(2) small": "Helps with reading in any context.",
+      ".praticas li:nth-child(3) strong": "Visible focus", ".praticas li:nth-child(3) small": "Shows where you are when navigating with a keyboard.",
+      ".grid-exemplos article:nth-child(1) h3": "Screen readers", ".grid-exemplos article:nth-child(1) p": "They turn on-screen elements and text into speech or a braille display.",
+      ".grid-exemplos article:nth-child(2) h3": "Keyboard navigation", ".grid-exemplos article:nth-child(2) p": "Lets you use websites without a mouse or complex gestures.",
+      ".grid-exemplos article:nth-child(3) h3": "Captions and transcripts", ".grid-exemplos article:nth-child(3) p": "They make videos and audio accessible in different contexts."
+    });
+    Object.assign(translatedContent["es-ES"], {
+      "#titulo-ativacao": "Activa los comandos de voz", ".ativacao p:not(.etiqueta)": "Para utilizar los comandos de voz, permite el acceso al micrófono. Después podrás decir “cambiar idioma a español”, “cambiar tema”, “leer tema 2”, “volver al inicio” o “ir al final” .", "#ativar-acessibilidade": "Activar comandos de voz", "#agora-nao-acessibilidade": "Ahora no",
+      ".pilar:nth-child(1) h3": "Perceptible", ".pilar:nth-child(1) p": "Información que puede verse, oírse o sentirse por más de un canal.",
+      ".pilar:nth-child(2) h3": "Operable", ".pilar:nth-child(2) p": "Controles utilizables con teclado, ratón, tacto y tecnologías de apoyo.",
+      ".pilar:nth-child(3) h3": "Comprensible", ".pilar:nth-child(3) p": "Textos claros, navegación previsible y ayuda disponible cuando sea necesaria.",
+      ".pilar:nth-child(4) h3": "Robusto", ".pilar:nth-child(4) p": "Compatibilidad con lectores de pantalla y distintos navegadores y dispositivos.",
+      ".praticas li:nth-child(1) strong": "Textos alternativos", ".praticas li:nth-child(1) small": "Describen imágenes para quien no las ve.",
+      ".praticas li:nth-child(2) strong": "Contraste adecuado", ".praticas li:nth-child(2) small": "Ayuda a leer en cualquier contexto.",
+      ".praticas li:nth-child(3) strong": "Foco visible", ".praticas li:nth-child(3) small": "Muestra dónde estás al navegar con el teclado.",
+      ".grid-exemplos article:nth-child(1) h3": "Lectores de pantalla", ".grid-exemplos article:nth-child(1) p": "Transforman elementos y textos de la pantalla en voz o en una línea braille.",
+      ".grid-exemplos article:nth-child(2) h3": "Navegación por teclado", ".grid-exemplos article:nth-child(2) p": "Permite usar sitios sin ratón ni gestos complejos.",
+      ".grid-exemplos article:nth-child(3) h3": "Subtítulos y transcripciones", ".grid-exemplos article:nth-child(3) p": "Hacen accesibles los vídeos y audios en distintos contextos."
+    });
+    Object.keys(translatedContent["en-US"]).forEach((selector) => {
+      const element = document.querySelector(selector);
+      if (element) portugueseContent[selector] = element.innerHTML;
+    });
+
+    function applyLanguage(language, feedback = true) {
+      currentLanguage = languages[language] ? language : "pt-BR";
+      const content = currentLanguage === "pt-BR" ? portugueseContent : translatedContent[currentLanguage];
+      Object.entries(content).forEach(([selector, value]) => {
+        const element = document.querySelector(selector);
+        if (element) element.innerHTML = value;
+      });
+      document.documentElement.lang = currentLanguage;
+      document.title = currentLanguage === "en-US" ? "Inclui | Systems for everyone" : currentLanguage === "es-ES" ? "Inclui | Sistemas para todas las personas" : "Inclui | Sistemas para todas as pessoas";
+      languageSelector.value = currentLanguage;
+      localStorage.setItem("inclui-language", currentLanguage);
+      if (recognition) recognition.lang = currentLanguage;
+      if (typeof updateReaderButtons === "function" && !isSpeaking) {
+        updateReaderButtons(languages[currentLanguage].reader, false);
+      }
+      if (feedback) announce(languages[currentLanguage].changed);
+    }
+
+    languageSelector.addEventListener("change", () => applyLanguage(languageSelector.value));
+
 
     /* ==========================================================
        LEITOR DE TELA / VOZ NATIVA DO NAVEGADOR
@@ -132,7 +217,7 @@
     }
 
 
-    function getPortugueseVoice() {
+    function getPreferredVoice() {
 
       const voices =
         window.speechSynthesis.getVoices();
@@ -141,25 +226,22 @@
         return null;
       }
 
-      /*
-       * Primeiro procura vozes brasileiras.
-       */
       let voice =
         voices.find(
           (v) =>
             v.lang &&
-            v.lang.toLowerCase() === "pt-br"
+            v.lang.toLowerCase() === currentLanguage.toLowerCase()
         );
 
       /*
-       * Depois procura qualquer português.
+       * Depois procura uma voz no mesmo idioma.
        */
       if (!voice) {
         voice =
           voices.find(
             (v) =>
               v.lang &&
-              v.lang.toLowerCase().startsWith("pt")
+              v.lang.toLowerCase().startsWith(currentLanguage.slice(0, 2).toLowerCase())
           );
       }
 
@@ -197,7 +279,7 @@
 
 
       const voice =
-        getPortugueseVoice();
+        getPreferredVoice();
 
       if (voice) {
         utterance.voice = voice;
@@ -205,7 +287,7 @@
 
 
       utterance.lang =
-        voice?.lang || "pt-BR";
+        voice?.lang || currentLanguage;
 
 
       /*
@@ -277,7 +359,7 @@
       currentPart = 0;
 
       updateReaderButtons(
-        "Ouvir a página",
+        languages[currentLanguage].reader,
         false
       );
 
@@ -717,6 +799,8 @@
 
     let microphoneStream = null;
 
+    applyLanguage(currentLanguage, false);
+
 
     function createRecognition() {
 
@@ -740,7 +824,7 @@
 
 
       recognition.lang =
-        "pt-BR";
+        currentLanguage;
 
 
       recognition.continuous =
@@ -940,9 +1024,7 @@
       );
 
 
-      announce(
-        "Comandos de voz ativos. Diga trocar tema, mudar tópico, ler tópico 1, voltar ao início ou ir para o final."
-      );
+      announce(languages[currentLanguage].voice);
 
 
       try {
@@ -1027,6 +1109,24 @@
           )
           .toLowerCase()
           .trim();
+
+      /* Troca de idioma: português, inglês e espanhol. */
+      const wantsLanguageChange =
+        /(?:trocar|mudar)\s+(?:o\s+)?idioma|change\s+language|cambiar\s+(?:el\s+)?idioma/.test(command);
+
+      if (wantsLanguageChange) {
+        if (/ingles|english|ingl[eé]s/.test(command)) {
+          applyLanguage("en-US");
+        } else if (/espanhol|espanol|spanish/.test(command)) {
+          applyLanguage("es-ES");
+        } else if (/portugues|portuguese/.test(command)) {
+          applyLanguage("pt-BR");
+        } else {
+          const order = ["pt-BR", "en-US", "es-ES"];
+          applyLanguage(order[(order.indexOf(currentLanguage) + 1) % order.length]);
+        }
+        return;
+      }
 
 
       /*
@@ -1454,4 +1554,3 @@
       );
 
     }
-
