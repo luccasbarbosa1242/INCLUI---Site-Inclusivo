@@ -1,0 +1,620 @@
+<!doctype html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <meta
+    name="description"
+    content="Uma página sobre sistemas digitais inclusivos e acessibilidade."
+  />
+
+  <title>Inclui | Sistemas para todas as pessoas</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Fraunces:opsz,wght@9..144,600;9..144,700&display=swap"
+    rel="stylesheet"
+  />
+
+  <link rel="stylesheet" href="style.css" />
+
+</head>
+
+<body>
+
+  <!-- =========================================================
+       PEDIDO DE PERMISSÃO DO MICROFONE
+  ========================================================== -->
+
+  <section
+    class="ativacao"
+    id="ativacao-acessibilidade"
+    role="dialog"
+    aria-modal="true"
+    aria-labelledby="titulo-ativacao"
+  >
+    <div class="ativacao-caixa">
+
+      <p class="etiqueta">
+        RECURSOS DE ACESSIBILIDADE
+      </p>
+
+      <h2 id="titulo-ativacao">
+        Ative os comandos de voz
+      </h2>
+
+      <p>
+        Para utilizar os comandos de voz, permita o acesso ao
+        microfone. Depois disso, você poderá dizer comandos como
+        “trocar tema”, “mudar tópico”, “ler tópico 2”,
+        “voltar ao início” ou “ir para o final”.
+      </p>
+
+      <div class="ativacao-acoes">
+        <button
+          class="ouvir"
+          id="ativar-acessibilidade"
+          type="button"
+          autofocus
+        >
+          Ativar comandos de voz
+        </button>
+
+        <button
+          class="ouvir agora-nao"
+          id="agora-nao-acessibilidade"
+          type="button"
+        >
+          Agora não
+        </button>
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- =========================================================
+       CABEÇALHO
+  ========================================================== -->
+
+  <header class="topo" aria-label="Cabeçalho">
+
+    <a
+      class="marca"
+      href="#inicio"
+      aria-label="Inclui, início"
+    >
+      inclui<span>.</span>
+    </a>
+
+    <nav aria-label="Navegação principal">
+      <a href="#entenda">Entenda</a>
+      <a href="#praticas">Na prática</a>
+      <a href="#exemplos">Exemplos</a>
+    </nav>
+
+    <div class="acoes-topo">
+
+      <button
+        class="controle tema"
+        type="button"
+        data-theme-toggle
+        aria-pressed="false"
+        aria-label="Ativar tema escuro"
+      >
+        <span aria-hidden="true">☾</span>
+        <span class="texto-controle"> Tema</span>
+      </button>
+
+      <button
+        class="controle comando"
+        type="button"
+        data-voice-command
+        aria-pressed="false"
+        aria-describedby="ajuda-comandos"
+      >
+        <span aria-hidden="true">◉</span>
+        <span class="texto-controle"> Comandos</span>
+      </button>
+
+      <button
+        class="ouvir ouvir-topo"
+        type="button"
+        data-reader
+        aria-pressed="false"
+      >
+        <span aria-hidden="true">◖</span>
+        Ouvir a página
+      </button>
+
+    </div>
+
+  </header>
+
+
+  <main id="conteudo">
+
+    <!-- =======================================================
+         HERO
+    ======================================================== -->
+
+    <section
+      class="hero"
+      id="inicio"
+      aria-labelledby="titulo-principal"
+    >
+
+      <div class="hero-texto">
+
+        <p class="etiqueta">
+          ACESSIBILIDADE DIGITAL
+        </p>
+
+        <h1 id="titulo-principal">
+          Tecnologia só é completa quando
+          <em>inclui.</em>
+        </h1>
+
+        <p class="introducao">
+          Sistemas inclusivos removem barreiras para que cada
+          pessoa possa estudar, trabalhar, criar e participar
+          do mundo digital com autonomia.
+        </p>
+
+        <div class="acoes">
+
+          <!-- A LEITURA DA PÁGINA É FEITA SOMENTE PELO BOTÃO -->
+          <button
+            class="ouvir ouvir-principal"
+            type="button"
+            data-reader
+            aria-pressed="false"
+          >
+            <span
+              class="icone-play"
+              aria-hidden="true"
+            >▶</span>
+
+            Ouvir conteúdo
+          </button>
+
+          <a
+            class="link-texto"
+            href="#entenda"
+          >
+            Descobrir mais
+            <span aria-hidden="true">↓</span>
+          </a>
+
+        </div>
+
+        <p class="ajuda-leitor">
+          Use o botão “Ouvir conteúdo” para iniciar a leitura
+          utilizando a voz disponível no navegador ou no sistema.
+          Pressione novamente para pausar ou continuar.
+        </p>
+
+        <p
+          class="ajuda-leitor"
+          id="ajuda-comandos"
+        >
+          Os comandos de voz ficam no canto superior direito.
+          Diga “trocar tema”, “mudar tópico”, “ler tópico 2”,
+          “voltar ao início” ou “ir para o final”.
+        </p>
+
+      </div>
+
+
+      <div
+        class="hero-arte"
+        aria-hidden="true"
+      >
+
+        <div class="orb orb-1"></div>
+        <div class="orb orb-2"></div>
+
+        <svg
+          viewBox="0 0 520 440"
+          role="img"
+          aria-label=""
+        >
+
+          <path
+            class="linha"
+            d="M90 326C117 148 297 72 424 154c67 44 55 160-25 202-88 46-196-31-177-125 11-56 80-84 125-47 33 28 19 84-22 94"
+          />
+
+          <circle
+            class="circulo"
+            cx="347"
+            cy="275"
+            r="32"
+          />
+
+          <path
+            class="linha fina"
+            d="M96 104l30 31M78 144l46 12M421 68l-11 43M457 95l-34 24"
+          />
+
+        </svg>
+
+        <div class="cartao-flutuante cartao-1">
+          <span>⌨</span>
+          <strong>Teclado</strong>
+          <small>Navegação livre</small>
+        </div>
+
+        <div class="cartao-flutuante cartao-2">
+          <span>◉</span>
+          <strong>Leitura</strong>
+          <small>Conteúdo acessível</small>
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- =======================================================
+         FAIXA
+    ======================================================== -->
+
+    <section
+      class="faixa"
+      aria-label="Princípios de acessibilidade"
+    >
+      <p>PERCEPTÍVEL</p>
+      <span aria-hidden="true">✦</span>
+      <p>OPERÁVEL</p>
+      <span aria-hidden="true">✦</span>
+      <p>COMPREENSÍVEL</p>
+      <span aria-hidden="true">✦</span>
+      <p>ROBUSTO</p>
+    </section>
+
+
+    <!-- =======================================================
+         ENTENDA
+    ======================================================== -->
+
+    <section
+      class="secao entenda"
+      id="entenda"
+      aria-labelledby="titulo-entenda"
+    >
+
+      <div class="cabecalho-secao">
+
+        <p class="etiqueta">
+          O QUE ISSO SIGNIFICA?
+        </p>
+
+        <h2 id="titulo-entenda">
+          Inclusão não é um extra.
+          <br />
+          É parte do projeto.
+        </h2>
+
+      </div>
+
+      <div class="texto-lateral">
+
+        <p>
+          Um sistema inclusivo é planejado para atender
+          pessoas com diferentes formas de perceber,
+          compreender e interagir com a tecnologia.
+        </p>
+
+        <p>
+          Em vez de criar uma única experiência “padrão”,
+          ele oferece caminhos diversos para chegar ao
+          mesmo resultado.
+        </p>
+
+      </div>
+
+      <div class="pilares">
+
+        <article class="pilar">
+          <span class="numero">01</span>
+
+          <h3>Perceptível</h3>
+
+          <p>
+            Informações que podem ser vistas, ouvidas ou
+            sentidas por mais de um canal.
+          </p>
+        </article>
+
+
+        <article class="pilar">
+          <span class="numero">02</span>
+
+          <h3>Operável</h3>
+
+          <p>
+            Controles utilizáveis por teclado, mouse,
+            toque e tecnologias assistivas.
+          </p>
+        </article>
+
+
+        <article class="pilar">
+          <span class="numero">03</span>
+
+          <h3>Compreensível</h3>
+
+          <p>
+            Textos claros, navegação previsível e ajuda
+            disponível quando necessária.
+          </p>
+        </article>
+
+
+        <article class="pilar">
+          <span class="numero">04</span>
+
+          <h3>Robusto</h3>
+
+          <p>
+            Compatibilidade com leitores de tela e
+            diferentes navegadores e dispositivos.
+          </p>
+        </article>
+
+      </div>
+
+    </section>
+
+
+    <!-- =======================================================
+         PRÁTICAS
+    ======================================================== -->
+
+    <section
+      class="secao praticas"
+      id="praticas"
+      aria-labelledby="titulo-praticas"
+    >
+
+      <div
+        class="ilustracao-maos"
+        aria-hidden="true"
+      >
+
+        <div class="painel-falso">
+          <i></i>
+          <i></i>
+          <i></i>
+          <b></b>
+          <b></b>
+        </div>
+
+        <div class="mao mao-a"></div>
+        <div class="mao mao-b"></div>
+
+      </div>
+
+
+      <div class="praticas-texto">
+
+        <p class="etiqueta">
+          DESIGN PARA PESSOAS REAIS
+        </p>
+
+        <h2 id="titulo-praticas">
+          Pequenas escolhas, grandes impactos.
+        </h2>
+
+        <p>
+          Quando a acessibilidade entra desde o início,
+          a experiência melhora para todo mundo — inclusive
+          em situações temporárias, como uma conexão lenta,
+          um ambiente barulhento ou uma lesão.
+        </p>
+
+        <ul>
+
+          <li>
+            <span aria-hidden="true">✓</span>
+
+            <div>
+              <strong>Textos alternativos</strong>
+
+              <small>
+                Descrevem imagens para quem não as vê.
+              </small>
+            </div>
+          </li>
+
+          <li>
+            <span aria-hidden="true">✓</span>
+
+            <div>
+              <strong>Contraste adequado</strong>
+
+              <small>
+                Ajuda na leitura em qualquer contexto.
+              </small>
+            </div>
+          </li>
+
+          <li>
+            <span aria-hidden="true">✓</span>
+
+            <div>
+              <strong>Foco visível</strong>
+
+              <small>
+                Mostra onde você está ao navegar pelo teclado.
+              </small>
+            </div>
+          </li>
+
+        </ul>
+
+      </div>
+
+    </section>
+
+
+    <!-- =======================================================
+         EXEMPLOS
+    ======================================================== -->
+
+    <section
+      class="secao exemplos"
+      id="exemplos"
+      aria-labelledby="titulo-exemplos"
+    >
+
+      <p class="etiqueta">
+        TECNOLOGIAS QUE ABREM CAMINHOS
+      </p>
+
+      <h2 id="titulo-exemplos">
+        Recursos que já fazem diferença
+      </h2>
+
+      <div class="grid-exemplos">
+
+        <article>
+
+          <div
+            class="icone-exemplo"
+            aria-hidden="true"
+          >
+            ♬
+          </div>
+
+          <h3>Leitores de tela</h3>
+
+          <p>
+            Transformam elementos e textos da tela em fala
+            ou em uma linha braille.
+          </p>
+
+        </article>
+
+
+        <article>
+
+          <div
+            class="icone-exemplo"
+            aria-hidden="true"
+          >
+            ⌨
+          </div>
+
+          <h3>Navegação por teclado</h3>
+
+          <p>
+            Permite usar sites sem precisar de mouse ou
+            gestos complexos.
+          </p>
+
+        </article>
+
+
+        <article>
+
+          <div
+            class="icone-exemplo"
+            aria-hidden="true"
+          >
+            CC
+          </div>
+
+          <h3>Legendas e transcrições</h3>
+
+          <p>
+            Tornam vídeos e áudios acessíveis em diferentes
+            contextos.
+          </p>
+
+        </article>
+
+      </div>
+
+    </section>
+
+
+    <!-- =======================================================
+         CONVITE
+    ======================================================== -->
+
+    <section
+      class="convite"
+      aria-labelledby="titulo-convite"
+    >
+
+      <p class="etiqueta">
+        COMECE HOJE
+      </p>
+
+      <h2 id="titulo-convite">
+        Projetar para todos é
+        <br />
+        <em>projetar melhor.</em>
+      </h2>
+
+      <button
+        class="ouvir ouvir-claro"
+        type="button"
+        data-reader
+        aria-pressed="false"
+      >
+        <span aria-hidden="true">▶</span>
+        Ouvir a página
+      </button>
+
+    </section>
+
+  </main>
+
+
+  <!-- =========================================================
+       RODAPÉ
+  ========================================================== -->
+
+  <footer>
+
+    <a
+      class="marca"
+      href="#inicio"
+    >
+      inclui<span>.</span>
+    </a>
+
+    <p>
+      Um projeto acadêmico sobre acessibilidade e inclusão digital.
+    </p>
+
+    <p>
+      Feito para ser acessível.
+    </p>
+
+  </footer>
+
+
+  <div
+    class="status-leitor"
+    role="status"
+    aria-live="polite"
+    aria-atomic="true"
+  ></div>
+
+
+  <!-- =========================================================
+       JAVASCRIPT
+  ========================================================== -->
+
+  <script src="script.js"></script>
+
+</body>
+</html>
