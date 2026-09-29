@@ -61,6 +61,7 @@
         Para utilizar os comandos de voz, permita o acesso ao
         microfone. Depois disso, você poderá dizer comandos como
         “trocar tema”, “mudar tópico”, “ler tópico 2”,
+        “ir para deficiência visual”, “próxima página”,
         “voltar ao início” ou “ir para o final”.
       </p>
 
@@ -96,15 +97,18 @@
     <a
       class="marca"
       href="#inicio"
+      data-page-link="inicio-geral"
       aria-label="Inclui, início"
     >
       inclui<span>.</span>
     </a>
 
-    <nav aria-label="Navegação principal">
-      <a href="#entenda">Entenda</a>
-      <a href="#praticas">Na prática</a>
-      <a href="#exemplos">Exemplos</a>
+    <nav class="navegacao-paginas" aria-label="Navegação entre páginas">
+      <button type="button" class="nav-pagina ativo" data-page-target="inicio-geral" aria-current="page">Início</button>
+      <button type="button" class="nav-pagina" data-page-target="visual">Visual</button>
+      <button type="button" class="nav-pagina" data-page-target="auditiva">Auditiva</button>
+      <button type="button" class="nav-pagina" data-page-target="motora">Motora</button>
+      <button type="button" class="nav-pagina" data-page-target="cognitiva">Cognitiva</button>
     </nav>
 
     <div class="acoes-topo">
@@ -166,6 +170,8 @@
 
 
   <main id="conteudo">
+
+    <div class="pagina-site" data-page-view="inicio-geral">
 
     <!-- =======================================================
          HERO
@@ -233,7 +239,9 @@
         >
           Os comandos de voz ficam no canto superior direito.
           Diga “trocar tema”, “mudar tópico”, “ler tópico 2”,
-          “voltar ao início” ou “ir para o final”.
+          “ir para deficiência visual”, “ir para deficiência auditiva”,
+          “ir para deficiência motora”, “ir para deficiência cognitiva”
+          ou “próxima página”.
         </p>
 
       </div>
@@ -604,6 +612,199 @@
 
     </section>
 
+
+
+    </div>
+
+    <!-- =======================================================
+         PÁGINA: DEFICIÊNCIA VISUAL
+    ======================================================== -->
+    <article class="pagina-site pagina-deficiencia" data-page-view="visual" hidden aria-labelledby="titulo-visual">
+      <section class="deficiencia-hero" data-topic>
+        <p class="etiqueta">INCLUSÃO E ACESSIBILIDADE</p>
+        <h1 id="titulo-visual">Deficiência <em>visual</em></h1>
+        <p class="introducao">Pessoas cegas ou com baixa visão podem acessar conteúdos digitais com autonomia quando a informação não depende apenas da visão.</p>
+        <button class="ouvir ouvir-principal leitor-pagina-dinamico" type="button" aria-pressed="false"><span aria-hidden="true">▶</span> Ouvir esta página</button>
+      </section>
+
+      <section class="secao deficiencia-conteudo contexto-deficiencia" data-topic aria-labelledby="visual-contexto">
+        <p class="etiqueta">CONHEÇA O CONTEXTO</p>
+        <h2 id="visual-contexto">O que os dados e o cotidiano mostram</h2>
+        <div class="contexto-grid">
+          <div class="contexto-dado">
+            <p class="contexto-numero">4,0%</p>
+            <p>No Brasil, segundo o Censo 2022, tinham muita dificuldade para enxergar ou não conseguiam enxergar, mesmo usando óculos ou lentes de contato.</p>
+            <p class="contexto-fonte">Percentual das pessoas com 2 anos ou mais. Os grupos podem se sobrepor; essas medidas não representam todos os graus de deficiência. <a href="https://www.ibge.gov.br/biblioteca/visualizacao/livros/liv102178.pdf" target="_blank" rel="noopener noreferrer">Fonte: IBGE, Censo Demográfico 2022 (PDF)</a>.</p>
+          </div>
+          <div class="contexto-texto">
+            <h3>Como isso afeta a vida</h3>
+            <p>A deficiência visual inclui a cegueira e a baixa visão. Seu impacto varia de pessoa para pessoa: ler letras pequenas, distinguir elementos de uma interface ou se orientar em um local desconhecido pode exigir recursos diferentes. Quando uma imagem, um botão ou um aviso não tem descrição textual, a barreira está também no ambiente.</p>
+            <h3>O que ajuda a incluir</h3>
+            <p>Descrever imagens informativas, manter títulos e formulários bem organizados, oferecer bom contraste e permitir ampliar o texto tornam conteúdos mais acessíveis. Leitores de tela e linhas braille podem transformar informação digital em fala ou leitura tátil.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="secao deficiencia-conteudo" data-topic aria-labelledby="visual-comunicacao">
+        <p class="etiqueta">COMUNICAÇÃO</p>
+        <h2 id="visual-comunicacao">Descreva o que precisa ser percebido</h2>
+        <div class="grid-inclusao">
+          <article><span class="numero">01</span><h3>Texto alternativo</h3><p>Descreva imagens que transmitam informação e evite usar imagens como única forma de apresentar textos importantes.</p></article>
+          <article><span class="numero">02</span><h3>Estrutura clara</h3><p>Use títulos, subtítulos, listas e rótulos de formulário que façam sentido quando lidos por um leitor de tela.</p></article>
+          <article><span class="numero">03</span><h3>Não dependa de cor</h3><p>Combine cor com texto, ícones ou padrões para indicar erros, estados e informações importantes.</p></article>
+        </div>
+      </section>
+
+      <section class="secao deficiencia-conteudo destaque-deficiencia" data-topic aria-labelledby="visual-navegacao">
+        <p class="etiqueta">NAVEGAÇÃO</p>
+        <h2 id="visual-navegacao">Permita navegar sem enxergar a tela</h2>
+        <ul class="lista-inclusao"><li>Garanta navegação completa por teclado e ordem de foco lógica.</li><li>Use foco visível e links com nomes que expliquem para onde levam.</li><li>Evite mudanças inesperadas de contexto e informe mensagens de erro de forma textual.</li><li>Mantenha contraste adequado e permita ampliação sem perda de conteúdo.</li></ul>
+      </section>
+
+      <section class="secao deficiencia-conteudo" data-topic aria-labelledby="visual-convivencia">
+        <p class="etiqueta">CONVIVÊNCIA</p>
+        <h2 id="visual-convivencia">Como incluir no dia a dia</h2>
+        <ul class="lista-inclusao"><li>Identifique-se ao iniciar uma conversa e avise quando estiver saindo.</li><li>Ofereça ajuda antes de tocar ou conduzir a pessoa.</li><li>Ao orientar caminhos, prefira referências objetivas como direita, esquerda, metros e obstáculos.</li><li>Compartilhe documentos em formatos acessíveis, não apenas como imagens digitalizadas.</li></ul>
+      </section>
+
+      <div class="navegacao-inferior" aria-label="Navegação entre páginas"><button type="button" data-page-prev>← Página anterior</button><button type="button" data-page-next>Próxima página →</button></div>
+    </article>
+
+    <!-- =======================================================
+         PÁGINA: DEFICIÊNCIA AUDITIVA
+    ======================================================== -->
+    <article class="pagina-site pagina-deficiencia" data-page-view="auditiva" hidden aria-labelledby="titulo-auditiva">
+      <section class="deficiencia-hero" data-topic>
+        <p class="etiqueta">INCLUSÃO E ACESSIBILIDADE</p>
+        <h1 id="titulo-auditiva">Deficiência <em>auditiva</em></h1>
+        <p class="introducao">A inclusão de pessoas surdas ou com perda auditiva exige alternativas visuais e textuais para informações que normalmente seriam transmitidas apenas por som.</p>
+        <button class="ouvir ouvir-principal leitor-pagina-dinamico" type="button" aria-pressed="false"><span aria-hidden="true">▶</span> Ouvir esta página</button>
+      </section>
+
+      <section class="secao deficiencia-conteudo contexto-deficiencia" data-topic aria-labelledby="auditiva-contexto">
+        <p class="etiqueta">CONHEÇA O CONTEXTO</p>
+        <h2 id="auditiva-contexto">O que os dados e o cotidiano mostram</h2>
+        <div class="contexto-grid">
+          <div class="contexto-dado">
+            <p class="contexto-numero">1,3%</p>
+            <p>No Brasil, segundo o Censo 2022, tinham muita dificuldade para ouvir ou não conseguiam ouvir, mesmo usando aparelho auditivo.</p>
+            <p class="contexto-fonte">Percentual das pessoas com 2 anos ou mais. Os grupos podem se sobrepor; essas medidas não representam todos os graus de deficiência. <a href="https://www.ibge.gov.br/biblioteca/visualizacao/livros/liv102178.pdf" target="_blank" rel="noopener noreferrer">Fonte: IBGE, Censo Demográfico 2022 (PDF)</a>.</p>
+          </div>
+          <div class="contexto-texto">
+            <h3>Como isso afeta a vida</h3>
+            <p>A perda auditiva pode ter diferentes graus. Algumas pessoas usam aparelho auditivo; outras se comunicam em Libras, por fala, por escrita ou por uma combinação dessas formas. Aulas e vídeos sem legenda, avisos apenas sonoros e atendimentos somente por telefone podem impedir o acesso à informação.</p>
+            <h3>O que ajuda a incluir</h3>
+            <p>Oferecer legendas e transcrições, combinar alarmes sonoros com alertas visuais e disponibilizar atendimento por texto ajuda a remover barreiras. Quando necessário, o acesso à interpretação em Libras também amplia a participação. Perguntar como a pessoa prefere se comunicar evita suposições.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="secao deficiencia-conteudo" data-topic aria-labelledby="auditiva-conteudo">
+        <p class="etiqueta">CONTEÚDO</p><h2 id="auditiva-conteudo">Faça o áudio também ser visível</h2>
+        <div class="grid-inclusao"><article><span class="numero">01</span><h3>Legendas</h3><p>Disponibilize legendas sincronizadas em vídeos e identifique falas e sons relevantes para a compreensão.</p></article><article><span class="numero">02</span><h3>Transcrições</h3><p>Ofereça uma versão em texto para podcasts, áudios, aulas gravadas e outros conteúdos sonoros.</p></article><article><span class="numero">03</span><h3>Alertas visuais</h3><p>Não use apenas sons para avisos. Combine-os com mensagens, ícones, vibração ou mudanças visuais.</p></article></div>
+      </section>
+
+      <section class="secao deficiencia-conteudo destaque-deficiencia" data-topic aria-labelledby="auditiva-comunicacao">
+        <p class="etiqueta">COMUNICAÇÃO</p><h2 id="auditiva-comunicacao">Respeite diferentes formas de comunicação</h2>
+        <ul class="lista-inclusao"><li>Fale de frente, com boa iluminação e sem esconder a boca.</li><li>Quando necessário, utilize texto, chat, recursos de transcrição ou intérprete de Libras.</li><li>Não presuma que toda pessoa surda utiliza Libras ou faz leitura labial.</li><li>Em reuniões, organize turnos de fala e compartilhe materiais por escrito.</li></ul>
+      </section>
+
+      <section class="secao deficiencia-conteudo" data-topic aria-labelledby="auditiva-inclusao">
+        <p class="etiqueta">INCLUSÃO</p><h2 id="auditiva-inclusao">Como incluir no dia a dia</h2>
+        <ul class="lista-inclusao"><li>Pergunte à própria pessoa qual forma de comunicação ela prefere.</li><li>Garanta alternativas textuais para chamadas telefônicas e atendimentos por voz.</li><li>Use espaços com boa visibilidade entre participantes.</li><li>Confirme informações importantes por escrito quando isso ajudar a evitar barreiras.</li></ul>
+      </section>
+      <div class="navegacao-inferior" aria-label="Navegação entre páginas"><button type="button" data-page-prev>← Página anterior</button><button type="button" data-page-next>Próxima página →</button></div>
+    </article>
+
+    <!-- =======================================================
+         PÁGINA: DEFICIÊNCIA MOTORA
+    ======================================================== -->
+    <article class="pagina-site pagina-deficiencia" data-page-view="motora" hidden aria-labelledby="titulo-motora">
+      <section class="deficiencia-hero" data-topic>
+        <p class="etiqueta">INCLUSÃO E ACESSIBILIDADE</p><h1 id="titulo-motora">Deficiência <em>motora</em></h1>
+        <p class="introducao">Pessoas com limitações de movimento podem utilizar teclado, voz, acionadores, rastreamento ocular e outros recursos. A interface precisa aceitar diferentes formas de interação.</p>
+        <button class="ouvir ouvir-principal leitor-pagina-dinamico" type="button" aria-pressed="false"><span aria-hidden="true">▶</span> Ouvir esta página</button>
+      </section>
+
+      <section class="secao deficiencia-conteudo contexto-deficiencia" data-topic aria-labelledby="motora-contexto">
+        <p class="etiqueta">CONHEÇA O CONTEXTO</p>
+        <h2 id="motora-contexto">O que os dados e o cotidiano mostram</h2>
+        <div class="contexto-grid">
+          <div class="contexto-dado">
+            <p class="contexto-numero">2,6% e 1,4%</p>
+            <p>No Brasil, segundo o Censo 2022, tinham, respectivamente, muita dificuldade ou impossibilidade de andar ou subir degraus, e de pegar pequenos objetos ou abrir e fechar tampas, mesmo com auxílio.</p>
+            <p class="contexto-fonte">Percentual das pessoas com 2 anos ou mais. Os grupos podem se sobrepor; essas medidas não representam todos os graus de deficiência. <a href="https://www.ibge.gov.br/biblioteca/visualizacao/livros/liv102178.pdf" target="_blank" rel="noopener noreferrer">Fonte: IBGE, Censo Demográfico 2022 (PDF)</a>.</p>
+          </div>
+          <div class="contexto-texto">
+            <h3>Como isso afeta a vida</h3>
+            <p>As limitações de movimento são diversas e podem afetar a locomoção, a força ou os movimentos finos das mãos. Escadas, espaços estreitos e equipamentos fora do alcance dificultam a circulação. No ambiente digital, botões pequenos e tarefas que exigem arrastar objetos com precisão também criam obstáculos.</p>
+            <h3>O que ajuda a incluir</h3>
+            <p>Rampas, elevadores, rotas livres e mobiliário alcançável ampliam o acesso aos espaços. Em sites, controles maiores, operação por teclado, alternativas a gestos complexos e tempo flexível permitem que mais pessoas concluam tarefas com autonomia.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="secao deficiencia-conteudo" data-topic aria-labelledby="motora-interface">
+        <p class="etiqueta">INTERFACE</p><h2 id="motora-interface">Não dependa de precisão motora</h2>
+        <div class="grid-inclusao"><article><span class="numero">01</span><h3>Teclado</h3><p>Todas as funções devem poder ser usadas sem mouse e com uma sequência de foco previsível.</p></article><article><span class="numero">02</span><h3>Áreas de clique</h3><p>Use controles com tamanho e espaçamento suficientes para reduzir cliques acidentais.</p></article><article><span class="numero">03</span><h3>Tempo flexível</h3><p>Evite limites de tempo rígidos e permita estender ou desativar temporizadores quando possível.</p></article></div>
+      </section>
+
+      <section class="secao deficiencia-conteudo destaque-deficiencia" data-topic aria-labelledby="motora-recursos">
+        <p class="etiqueta">RECURSOS</p><h2 id="motora-recursos">Ofereça mais de uma forma de realizar a ação</h2>
+        <ul class="lista-inclusao"><li>Não exija gestos complexos como única alternativa para uma tarefa.</li><li>Evite interações que dependam de arrastar com precisão; ofereça botões ou menus equivalentes.</li><li>Garanta compatibilidade com comandos de voz e tecnologias assistivas.</li><li>Mantenha controles importantes acessíveis sem exigir movimentos repetitivos.</li></ul>
+      </section>
+
+      <section class="secao deficiencia-conteudo" data-topic aria-labelledby="motora-convivencia">
+        <p class="etiqueta">CONVIVÊNCIA</p><h2 id="motora-convivencia">Como incluir no dia a dia</h2>
+        <ul class="lista-inclusao"><li>Mantenha rotas, mesas e espaços de circulação desobstruídos.</li><li>Não mova cadeira de rodas, bengala ou outro equipamento sem autorização.</li><li>Posicione materiais e controles em locais alcançáveis.</li><li>Dê tempo suficiente para a pessoa realizar tarefas sem pressioná-la.</li></ul>
+      </section>
+      <div class="navegacao-inferior" aria-label="Navegação entre páginas"><button type="button" data-page-prev>← Página anterior</button><button type="button" data-page-next>Próxima página →</button></div>
+    </article>
+
+    <!-- =======================================================
+         PÁGINA: DEFICIÊNCIA COGNITIVA / INTELECTUAL
+    ======================================================== -->
+    <article class="pagina-site pagina-deficiencia" data-page-view="cognitiva" hidden aria-labelledby="titulo-cognitiva">
+      <section class="deficiencia-hero" data-topic>
+        <p class="etiqueta">INCLUSÃO E ACESSIBILIDADE</p><h1 id="titulo-cognitiva">Deficiência <em>cognitiva e intelectual</em></h1>
+        <p class="introducao">Interfaces simples, linguagem clara e rotinas previsíveis reduzem barreiras para pessoas que podem ter diferentes formas ou ritmos de compreender, memorizar e executar tarefas.</p>
+        <button class="ouvir ouvir-principal leitor-pagina-dinamico" type="button" aria-pressed="false"><span aria-hidden="true">▶</span> Ouvir esta página</button>
+      </section>
+
+      <section class="secao deficiencia-conteudo contexto-deficiencia" data-topic aria-labelledby="cognitiva-contexto">
+        <p class="etiqueta">CONHEÇA O CONTEXTO</p>
+        <h2 id="cognitiva-contexto">O que os dados e o cotidiano mostram</h2>
+        <div class="contexto-grid">
+          <div class="contexto-dado">
+            <p class="contexto-numero">1,4%</p>
+            <p>No Brasil, segundo o Censo 2022, tinham muita dificuldade ou não conseguiam se comunicar, realizar cuidados pessoais, trabalhar ou estudar em decorrência de limitações nas funções mentais.</p>
+            <p class="contexto-fonte">Percentual das pessoas com 2 anos ou mais. Os grupos podem se sobrepor; essas medidas não representam todos os graus de deficiência. <a href="https://www.ibge.gov.br/biblioteca/visualizacao/livros/liv102178.pdf" target="_blank" rel="noopener noreferrer">Fonte: IBGE, Censo Demográfico 2022 (PDF)</a>.</p>
+          </div>
+          <div class="contexto-texto">
+            <h3>Como isso afeta a vida</h3>
+            <p>Dificuldades cognitivas e deficiências intelectuais não são uma experiência única: aprendizagem, memória, compreensão e comunicação podem ser afetadas de maneiras diferentes. Instruções extensas, excesso de informações e mudanças inesperadas na interface podem tornar atividades cotidianas mais difíceis.</p>
+            <h3>O que ajuda a incluir</h3>
+            <p>Linguagem simples, etapas curtas, navegação previsível e mensagens que expliquem como corrigir erros ajudam no estudo, no trabalho e no uso de serviços. Respeitar o tempo e as escolhas da pessoa é tão importante quanto adaptar o conteúdo.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="secao deficiencia-conteudo" data-topic aria-labelledby="cognitiva-clareza">
+        <p class="etiqueta">CLAREZA</p><h2 id="cognitiva-clareza">Reduza a carga de compreensão</h2>
+        <div class="grid-inclusao"><article><span class="numero">01</span><h3>Linguagem simples</h3><p>Prefira frases diretas, palavras conhecidas e instruções divididas em etapas curtas.</p></article><article><span class="numero">02</span><h3>Consistência</h3><p>Mantenha menus, botões e padrões de navegação nos mesmos lugares e com nomes previsíveis.</p></article><article><span class="numero">03</span><h3>Apoio visual</h3><p>Quando útil, combine texto com ícones e exemplos sem retirar a informação textual.</p></article></div>
+      </section>
+
+      <section class="secao deficiencia-conteudo destaque-deficiencia" data-topic aria-labelledby="cognitiva-tarefas">
+        <p class="etiqueta">TAREFAS</p><h2 id="cognitiva-tarefas">Ajude a pessoa a saber o que fazer depois</h2>
+        <ul class="lista-inclusao"><li>Divida processos longos em etapas e mostre o progresso.</li><li>Dê mensagens de erro claras, explicando o problema e como corrigi-lo.</li><li>Evite excesso de elementos, animações e informações concorrendo pela atenção.</li><li>Permita revisar e corrigir dados antes de ações importantes.</li></ul>
+      </section>
+
+      <section class="secao deficiencia-conteudo" data-topic aria-labelledby="cognitiva-convivencia">
+        <p class="etiqueta">CONVIVÊNCIA</p><h2 id="cognitiva-convivencia">Como incluir no dia a dia</h2>
+        <ul class="lista-inclusao"><li>Explique tarefas de maneira objetiva e confirme se a informação foi compreendida sem infantilizar.</li><li>Respeite o tempo de resposta e evite completar frases ou decisões pela pessoa.</li><li>Use rotinas e referências previsíveis quando elas forem úteis.</li><li>Fale diretamente com a pessoa, mesmo quando houver acompanhante ou profissional de apoio.</li></ul>
+      </section>
+      <div class="navegacao-inferior" aria-label="Navegação entre páginas"><button type="button" data-page-prev>← Página anterior</button><button type="button" data-page-next>Voltar ao início →</button></div>
+    </article>
   </main>
 
 
