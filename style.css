@@ -896,6 +896,56 @@
     }
 
     /* =========================
+       SOBRE O INCLUI
+    ========================= */
+
+    .sobre-inclui { padding-top: 115px; padding-bottom: 130px; text-align: center; }
+    .sobre-inclui-intro {
+      max-width: 960px;
+      margin: 0 auto 50px;
+    }
+    .sobre-inclui-intro h2 {
+      font-size: clamp(40px, 5vw, 64px);
+      margin: 0 auto 25px;
+      max-width: 900px;
+    }
+    .sobre-inclui-intro > p { max-width: 800px; margin: 0 auto; font-size: 17px; line-height: 1.75; color: #485575; }
+    .sobre-inclui-recursos { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px; text-align: left; }
+    .sobre-inclui-recursos article {
+      padding: 30px; min-height: 240px; border: 1px solid #fff; border-radius: 22px;
+      background: #ffffffa8; box-shadow: 0 16px 33px #534da51e;
+      backdrop-filter: blur(14px);
+      transition: transform .25s ease, box-shadow .25s ease;
+    }
+    .sobre-inclui-recursos article:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 24px 40px #5037b739;
+    }
+    .sobre-icone {
+      display: inline-flex; align-items: center; justify-content: center;
+      width: 48px; height: 48px; border-radius: 13px;
+      background: linear-gradient(135deg, #baff64, #41dff4);
+      color: #18224f; font-size: 21px; font-weight: 700;
+    }
+    .sobre-inclui-recursos h3 { margin: 34px 0 7px; font: 600 23px Fraunces, Georgia, serif; color: #302d78; }
+    .sobre-inclui-recursos p { margin: 0; font-size: 14px; line-height: 1.7; color: #536057; }
+    .sobre-inclui-fecho {
+      margin: 38px auto 0; max-width: 800px; line-height: 1.7; color: #485575;
+    }
+    body[data-theme="dark"] .sobre-inclui-intro > p,
+    body[data-theme="dark"] .sobre-inclui-recursos p { color: #cbd3f5; }
+    body[data-theme="dark"] .sobre-inclui-recursos article { background: #141936; border-color: #4c5394; }
+    body[data-theme="dark"] .sobre-inclui-recursos h3 { color: #f4f2ff; }
+    body[data-theme="dark"] .sobre-inclui-fecho { color: #cbd3f5; }
+    @media (max-width: 850px) {
+      .sobre-inclui-recursos { grid-template-columns: 1fr; }
+      .sobre-inclui { padding-top: 75px; padding-bottom: 80px; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .sobre-inclui-recursos article:hover { transform: none; }
+    }
+
+    /* =========================
        CONVITE
     ========================= */
 
@@ -1376,6 +1426,38 @@
    NAVEGAÇÃO ENTRE PÁGINAS DE DEFICIÊNCIA
 ========================================================= */
 .pagina-site[hidden] { display: none !important; }
+
+/* Preferências de leitura: o zoom atua só no conteúdo, mantendo os controles acessíveis. */
+.pagina-site { zoom: var(--inclui-text-zoom, 1); }
+.preferencias-leitura {
+  max-width:1180px; margin:12px auto 0; padding:10px 24px;
+  display:flex; align-items:center; flex-wrap:wrap; gap:10px;
+  font:600 14px "DM Sans",Arial,sans-serif;
+}
+.preferencias-titulo { margin-right:4px; }
+.preferencias-grupo { display:inline-flex; align-items:center; gap:6px; }
+.preferencias-leitura button, .preferencias-leitura output {
+  min-height:40px; border-radius:10px; padding:8px 12px;
+  font:inherit; color:var(--ink); background:#fff;
+  border:1px solid #a7acd5;
+}
+.preferencias-leitura button { cursor:pointer; }
+.preferencias-leitura button:hover { background:#ede7ff; }
+.preferencias-leitura button:focus-visible { outline:3px solid #4665e7; outline-offset:2px; }
+.preferencias-leitura button:disabled { opacity:.55; cursor:not-allowed; }
+.preferencias-leitura output { min-width:60px; text-align:center; }
+.preferencias-leitura [aria-pressed="true"] { background:#4b2bc7; color:#fff; }
+body[data-theme="dark"] .preferencias-leitura button,
+body[data-theme="dark"] .preferencias-leitura output { background:#141936; color:#f4f2ff; border-color:#8d93c5; }
+body[data-theme="dark"] .preferencias-leitura [aria-pressed="true"] { background:#6044c2; }
+
+/* Espaçamento aplicado ao texto, preservando o layout dos controles. */
+body[data-reading-spacing="true"] .pagina-site :is(p, li, small) {
+  line-height:1.8;
+  letter-spacing:.02em;
+  word-spacing:.05em;
+}
+body[data-reading-spacing="true"] .pagina-site p { margin-bottom:1.25em; }
 
 .navegacao-paginas { display:flex; align-items:center; gap:6px !important; }
 .nav-pagina {

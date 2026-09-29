@@ -168,6 +168,17 @@
 
   </header>
 
+  <section class="preferencias-leitura" aria-label="Preferências de leitura">
+    <span class="preferencias-titulo">Leitura</span>
+    <div class="preferencias-grupo" role="group" aria-label="Tamanho do conteúdo">
+      <button type="button" data-text-decrease aria-label="Diminuir tamanho do conteúdo">A−</button>
+      <output data-text-level aria-live="polite" aria-label="Tamanho atual do conteúdo">100%</output>
+      <button type="button" data-text-increase aria-label="Aumentar tamanho do conteúdo">A+</button>
+    </div>
+    <button type="button" data-reading-spacing aria-pressed="false">Mais espaçamento</button>
+    <button type="button" data-reading-reset>Restaurar leitura</button>
+  </section>
+
 
   <main id="conteudo">
 
@@ -580,6 +591,49 @@
 
     </section>
 
+
+    <!-- =======================================================
+         SOBRE O PROJETO
+    ======================================================== -->
+
+    <section class="secao sobre-inclui" id="sobre-inclui" aria-labelledby="titulo-sobre-inclui">
+      <div class="sobre-inclui-intro">
+        <div>
+          <p class="etiqueta">SOBRE O PROJETO</p>
+          <h2 id="titulo-sobre-inclui">Informação e acesso no mesmo lugar.</h2>
+        </div>
+        <p>
+          O Inclui é um projeto desenvolvido com HTML, CSS e JavaScript para
+          tornar a inclusão digital mais fácil de compreender e de praticar.
+          O site apresenta diferentes tipos de deficiência, dados sobre sua
+          presença na população brasileira, possíveis barreiras no dia a dia
+          e atitudes que ajudam a ampliar a participação de cada pessoa.
+        </p>
+      </div>
+
+      <div class="sobre-inclui-recursos" aria-label="Recursos disponíveis no Inclui">
+        <article>
+          <span class="sobre-icone" aria-hidden="true">◖</span>
+          <h3>Leitura em voz alta</h3>
+          <p>O conteúdo pode ser ouvido pelo leitor do site, oferecendo outra forma de acompanhar os textos quando a leitura visual é difícil.</p>
+        </article>
+        <article>
+          <span class="sobre-icone" aria-hidden="true">◉</span>
+          <h3>Comandos de voz</h3>
+          <p>É possível navegar entre páginas e acionar funções falando, o que pode ajudar quem encontra barreiras para usar mouse ou teclado.</p>
+        </article>
+        <article>
+          <span class="sobre-icone" aria-hidden="true">A+</span>
+          <h3>Leitura ajustável</h3>
+          <p>Controles para ampliar o conteúdo e aumentar o espaçamento facilitam a leitura, inclusive para pessoas com baixa visão.</p>
+        </article>
+      </div>
+
+      <p class="sobre-inclui-fecho">
+        O objetivo é unir conteúdo educativo e recursos de acesso em uma
+        experiência que respeite diferentes maneiras de navegar e aprender.
+      </p>
+    </section>
 
     <!-- =======================================================
          CONVITE

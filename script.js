@@ -3849,6 +3849,8 @@ function restoreMicrophonePreference() {
 
 function initializeSite() {
 
+  configureReadingPreferences();
+
   /*
    * Configura navegação.
    */
@@ -3907,6 +3909,50 @@ function initializeSite() {
     false
   );
 
+}
+
+/* Preferências independentes da leitura em voz e da navegação. */
+function configureReadingPreferences() {
+  const decrease = document.querySelector("[data-text-decrease]");
+  const increase = document.querySelector("[data-text-increase]");
+  const level = document.querySelector("[data-text-level]");
+  const spacingButton = document.querySelector("[data-reading-spacing]");
+  const reset = document.querySelector("[data-reading-reset]");
+  if (!decrease || !increase || !level || !spacingButton || !reset) return;
+
+  const allowedLevels = [100, 110, 125, 150];
+  const savedLevel = Number(localStorage.getItem("inclui-text-size"));
+  let size = allowedLevels.includes(savedLevel) ? savedLevel : 100;
+  let spacing = localStorage.getItem("inclui-reading-spacing") === "true";
+
+  function render() {
+    document.documentElement.style.setProperty("--inclui-text-zoom", String(size / 100));
+    document.body.dataset.readingSpacing = String(spacing);
+    level.value = `${size}%`;
+    level.textContent = `${size}%`;
+    decrease.disabled = size === allowedLevels[0];
+    increase.disabled = size === allowedLevels[allowedLevels.length - 1];
+    spacingButton.setAttribute("aria-pressed", String(spacing));
+    spacingButton.textContent = spacing ? "Espaçamento normal" : "Mais espaçamento";
+  }
+
+  function save() {
+    localStorage.setItem("inclui-text-size", String(size));
+    localStorage.setItem("inclui-reading-spacing", String(spacing));
+    render();
+  }
+
+  decrease.addEventListener("click", () => {
+    const index = allowedLevels.indexOf(size);
+    if (index > 0) { size = allowedLevels[index - 1]; save(); }
+  });
+  increase.addEventListener("click", () => {
+    const index = allowedLevels.indexOf(size);
+    if (index < allowedLevels.length - 1) { size = allowedLevels[index + 1]; save(); }
+  });
+  spacingButton.addEventListener("click", () => { spacing = !spacing; save(); });
+  reset.addEventListener("click", () => { size = 100; spacing = false; save(); });
+  render();
 }
 
 
