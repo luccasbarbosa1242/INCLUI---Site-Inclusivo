@@ -4038,6 +4038,292 @@ console.log(
 );
 
 
+/* =========================================
+   FILTRO DE DALTONISMO
+   ========================================= */
+
+const botaoDaltonismo = document.getElementById("botao-daltonismo");
+
+if (botaoDaltonismo) {
+
+  /*
+     =========================================
+     1. CRIA OS FILTROS SVG
+     =========================================
+  */
+
+  const SVG_NS = "http://www.w3.org/2000/svg";
+
+  const svg = document.createElementNS(SVG_NS, "svg");
+
+  svg.setAttribute("width", "0");
+  svg.setAttribute("height", "0");
+
+  svg.style.position = "absolute";
+  svg.style.width = "0";
+  svg.style.height = "0";
+  svg.style.overflow = "hidden";
+
+  svg.innerHTML = `
+    <defs>
+
+      <!-- PROTANOPIA -->
+      <filter id="filtro-protanopia">
+        <feColorMatrix
+          type="matrix"
+          values="
+            0.567 0.433 0     0 0
+            0.558 0.442 0     0 0
+            0     0.242 0.758 0 0
+            0     0     0     1 0
+          "
+        />
+      </filter>
+
+      <!-- DEUTERANOPIA -->
+      <filter id="filtro-deuteranopia">
+        <feColorMatrix
+          type="matrix"
+          values="
+            0.625 0.375 0     0 0
+            0.700 0.300 0     0 0
+            0     0.300 0.700 0 0
+            0     0     0     1 0
+          "
+        />
+      </filter>
+
+      <!-- TRITANOPIA -->
+      <filter id="filtro-tritanopia">
+        <feColorMatrix
+          type="matrix"
+          values="
+            0.950 0.050 0     0 0
+            0     0.433 0.567 0 0
+            0     0.475 0.525 0 0
+            0     0     0     1 0
+          "
+        />
+      </filter>
+
+      <!-- ACROMATOPSIA -->
+      <filter id="filtro-acromatopsia">
+        <feColorMatrix
+          type="matrix"
+          values="
+            0.2126 0.7152 0.0722 0 0
+            0.2126 0.7152 0.0722 0 0
+            0.2126 0.7152 0.0722 0 0
+            0      0      0      1 0
+          "
+        />
+      </filter>
+
+    </defs>
+  `;
+
+  document.body.appendChild(svg);
+
+
+  /*
+     =========================================
+     2. CRIA O MENU
+     =========================================
+  */
+
+  const menu = document.createElement("div");
+
+  menu.className = "menu-daltonismo";
+
+  menu.hidden = true;
+
+  menu.innerHTML = `
+    <button type="button" data-filtro="normal">
+      Normal
+    </button>
+
+    <button type="button" data-filtro="protanopia">
+      Protanopia
+    </button>
+
+    <button type="button" data-filtro="deuteranopia">
+      Deuteranopia
+    </button>
+
+    <button type="button" data-filtro="tritanopia">
+      Tritanopia
+    </button>
+
+    <button type="button" data-filtro="acromatopsia">
+      Acromatopsia
+    </button>
+  `;
+
+
+  /*
+     =========================================
+     3. COLOCA O MENU AO LADO DO BOTÃO
+     =========================================
+  */
+
+  const containerBotao = botaoDaltonismo.parentElement;
+
+  if (containerBotao) {
+
+    containerBotao.style.position = "relative";
+
+    containerBotao.appendChild(menu);
+
+  }
+
+
+  /*
+     =========================================
+     4. ABRIR / FECHAR MENU
+     =========================================
+  */
+
+  botaoDaltonismo.addEventListener("click", () => {
+
+    menu.hidden = !menu.hidden;
+
+  });
+
+
+  /*
+     =========================================
+     5. APLICAR O FILTRO NA PÁGINA INTEIRA
+     =========================================
+  */
+
+  const botoesFiltro = menu.querySelectorAll("[data-filtro]");
+
+  botoesFiltro.forEach((botao) => {
+
+    botao.addEventListener("click", () => {
+
+      const filtro = botao.dataset.filtro;
+
+
+      /*
+         Primeiro remove qualquer filtro
+         que já esteja aplicado.
+      */
+
+      document.body.style.filter = "";
+
+
+      /*
+         NORMAL
+         Volta para as cores originais.
+      */
+
+      if (filtro === "normal") {
+
+        document.body.style.filter = "";
+
+      }
+
+
+      /*
+         PROTANOPIA
+      */
+
+      else if (filtro === "protanopia") {
+
+        document.body.style.filter =
+          'url("#filtro-protanopia")';
+
+      }
+
+
+      /*
+         DEUTERANOPIA
+      */
+
+      else if (filtro === "deuteranopia") {
+
+        document.body.style.filter =
+          'url("#filtro-deuteranopia")';
+
+      }
+
+
+      /*
+         TRITANOPIA
+      */
+
+      else if (filtro === "tritanopia") {
+
+        document.body.style.filter =
+          'url("#filtro-tritanopia")';
+
+      }
+
+
+      /*
+         ACROMATOPSIA
+      */
+
+      else if (filtro === "acromatopsia") {
+
+        document.body.style.filter =
+          'url("#filtro-acromatopsia")';
+
+      }
+
+
+      /*
+         Marca o botão selecionado.
+      */
+
+      botoesFiltro.forEach((b) => {
+
+        b.classList.remove("ativo");
+
+      });
+
+      botao.classList.add("ativo");
+
+
+      /*
+         Marca o botão principal como ativo.
+      */
+
+      if (filtro === "normal") {
+
+        botaoDaltonismo.classList.remove("filtro-ativo");
+
+        botaoDaltonismo.setAttribute(
+          "aria-pressed",
+          "false"
+        );
+
+      } else {
+
+        botaoDaltonismo.classList.add("filtro-ativo");
+
+        botaoDaltonismo.setAttribute(
+          "aria-pressed",
+          "true"
+        );
+
+      }
+
+
+      /*
+         Fecha o menu depois de escolher.
+      */
+
+      menu.hidden = true;
+
+    });
+
+  });
+
+}
+
+
 /* ==========================================================
    FIM DO SCRIPT
 ========================================================== */
