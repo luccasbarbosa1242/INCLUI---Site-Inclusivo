@@ -1346,3 +1346,28 @@
         animation: none !important;
       }
     }
+
+    .fechar-ativacao {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  width: 36px;
+  height: 36px;
+  border: 0;
+  border-radius: 50%;
+  background: transparent;
+  color: inherit;
+  font-size: 24px;
+  line-height: 1;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.fechar-ativacao:hover,
+.fechar-ativacao:focus-visible {
+  background: rgba(0, 0, 0, 0.08);
+  outline: 2px solid currentColor;
+  outline-offset: 2px;
+}

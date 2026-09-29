@@ -15,6 +15,9 @@
     const commandButton =
       document.querySelector("[data-voice-command]");
 
+  const disableMicrophoneButton =
+     document.querySelector("#desativar-microfone");
+
     const activationPanel =
       document.querySelector("#ativacao-acessibilidade");
 
@@ -1037,51 +1040,35 @@
 
 
     function stopVoiceCommands() {
+  isListening = false;
 
-      isListening = false;
+  if (recognition) {
+    try {
+      recognition.stop();
+    } catch {}
+  }
 
+  if (microphoneStream) {
+    try {
+      microphoneStream
+        .getTracks()
+        .forEach((track) => track.stop());
+    } catch {}
 
-      if (recognition) {
-        try {
-          recognition.stop();
-        } catch {}
-      }
+    microphoneStream = null;
+  }
 
+  microphoneGranted = false;
 
-      commandButton.setAttribute(
-        "aria-pressed",
-        "false"
-      );
+  commandButton.setAttribute(
+    "aria-pressed",
+    "false"
+  );
 
-
-      announce(
-        "Comandos de voz desativados."
-      );
-
-    }
-
-
-    async function toggleVoiceCommands() {
-
-      if (isListening) {
-
-        stopVoiceCommands();
-
-      } else {
-
-        await startVoiceCommands();
-
-      }
-
-    }
-
-
-    commandButton.addEventListener(
-      "click",
-      toggleVoiceCommands
-    );
-
-
+  announce(
+    "Microfone e comandos de voz desativados."
+  );
+}
     /* ==========================================================
        COMANDOS DE VOZ
        

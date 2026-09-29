@@ -39,6 +39,16 @@
   >
     <div class="ativacao-caixa">
 
+       <button
+    class="fechar-ativacao"
+    type="button"
+    aria-label="Fechar e não permitir o uso do microfone"
+    title="Fechar e não permitir o uso do microfone"
+    onclick="fecharPedidoMicrofone(event)"
+  >
+    <span aria-hidden="true">×</span>
+  </button>
+
       <p class="etiqueta">
         RECURSOS DE ACESSIBILIDADE
       </p>
@@ -129,6 +139,16 @@
         <span aria-hidden="true">◉</span>
         <span class="texto-controle"> Comandos</span>
       </button>
+
+      <button
+  class="controle comando-fechar"
+  type="button"
+  id="desativar-microfone"
+  aria-label="Desativar microfone"
+>
+  <span aria-hidden="true">✕</span>
+  <span class="texto-controle"> Desativar microfone</span>
+</button>
 
       <button
         class="ouvir ouvir-topo"
